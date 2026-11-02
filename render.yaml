@@ -1,0 +1,15 @@
+# Blueprint Render.com: hosting situs + chatbot AI (server Node) dalam satu layanan gratis.
+services:
+  - type: web
+    name: basreng
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: node server/chat-server.js
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: ANTHROPIC_API_KEY
+        sync: false   # opsional; kosong = chatbot pakai AI gratis (Pollinations)
+      - key: ANTHROPIC_MODEL
+        value: claude-haiku-5-5
